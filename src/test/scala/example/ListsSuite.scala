@@ -24,7 +24,7 @@ class ListsSuite {
     assert(1 + 1 == 2)
 
   @Test def `one plus one is three (0pts)?`: Unit =
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+    assert(1 + 1 != 3) // This assertion fails! Go ahead and fix it.
 
   /**
    * One problem with the previous (failing) test is that JUnit will
@@ -48,7 +48,7 @@ class ListsSuite {
    * when writing tests.
    */
   @Test def `details why one plus one is not three (0pts)`: Unit =
-    Assert.assertEquals(3, 1 + 1) // Fix me, please!
+    Assert.assertEquals(2, 1 + 1) // Fix me, please!
 
   /**
    * Exceptional behavior of a methods can be tested using a try/catch
