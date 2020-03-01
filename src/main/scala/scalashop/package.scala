@@ -43,7 +43,28 @@ package object scalashop extends BoxBlurKernelInterface {
   def boxBlurKernel(src: Img, x: Int, y: Int, radius: Int): RGBA = {
 
     // TODO implement using while loops
-    ???
+    var r = 0
+    var g = 0
+    var b = 0
+    var a = 0
+
+    var count = 0
+
+    var xi = clamp(x-radius, 0, src.width-1)
+    while(xi<=clamp(x+radius, 0, src.width-1)) {
+      var yi = clamp(y-radius, 0, src.height-1)
+      while(yi<=clamp(y+radius, 0, src.height-1)) {
+        r = r + red(src(xi, yi))
+        g = g + green(src(xi, yi))
+        b = b + blue(src(xi, yi))
+        a = a + alpha(src(xi, yi))
+        count = count + 1
+        yi = yi + 1
+      }
+      xi = xi + 1
+    }
+
+    rgba(r/count, g/count, b/count, a/count)
   }
 
   val forkJoinPool = new ForkJoinPool
